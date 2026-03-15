@@ -1,0 +1,1216 @@
+/* ============================================================
+   PIRANESI — DEDALUS
+   Dark Neoclassical Exhibition
+   ============================================================ */
+
+:root {
+  --stone:        #0c0b09;
+  --stone-mid:    #161410;
+  --stone-light:  #1f1c17;
+  --stone-border: #2e2920;
+  --parchment:    #c8b89a;
+  --parchment-dim:#8a7a64;
+  --ivory:        #e8dcc8;
+  --ivory-bright: #f2eadb;
+  --gold:         #b8973a;
+  --gold-dim:     #7a6228;
+  --rust:         #8b3a2a;
+  --blood:        #6b1a1a;
+  --prussian:     #1a2d4a;
+  --slate:        #2a3d52;
+  --font-display: 'Cinzel Decorative', serif;
+  --font-title:   'Cinzel', serif;
+  --font-body:    'EB Garamond', serif;
+  --transition:   0.3s ease;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--stone);
+  color: var(--parchment);
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; }
+a { color: var(--gold); text-decoration: none; transition: color var(--transition); }
+a:hover { color: var(--ivory-bright); }
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+.site-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2.5rem;
+  background: linear-gradient(to bottom, rgba(12,11,9,0.97) 0%, rgba(12,11,9,0.85) 100%);
+  border-bottom: 1px solid var(--stone-border);
+  backdrop-filter: blur(8px);
+}
+
+.nav-logo img {
+  height: 40px;
+  width: auto;
+  opacity: 0.9;
+  transition: opacity var(--transition);
+}
+.nav-logo:hover img { opacity: 1; }
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2.5rem;
+}
+
+.nav-links a {
+  font-family: var(--font-title);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--parchment-dim);
+  position: relative;
+  padding-bottom: 2px;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 1px;
+  background: var(--gold);
+  transition: width var(--transition);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--ivory);
+}
+.nav-links a:hover::after,
+.nav-links a.active::after { width: 100%; }
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--parchment);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 80px;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-cover-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  opacity: 0.35;
+  filter: sepia(20%);
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to right, rgba(12,11,9,0.85) 0%, rgba(12,11,9,0.4) 60%, rgba(12,11,9,0.7) 100%),
+    linear-gradient(to bottom, rgba(12,11,9,0.3) 0%, rgba(12,11,9,0.0) 40%, rgba(12,11,9,0.9) 100%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 780px;
+  padding: 3rem 2rem;
+  animation: fadeUp 1.2s ease forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-eyebrow {
+  font-family: var(--font-title);
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--parchment-dim);
+  margin-bottom: 1.5rem;
+}
+
+.hero-logo {
+  max-width: 320px;
+  margin: 0 auto 1.5rem;
+  filter: brightness(0.9);
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 9vw, 7rem);
+  letter-spacing: 0.2em;
+  color: var(--ivory-bright);
+  text-shadow: 0 0 60px rgba(184,151,58,0.3), 0 4px 20px rgba(0,0,0,0.8);
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+.hero-subtitle {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--parchment-dim);
+  letter-spacing: 0.05em;
+  margin-bottom: 2rem;
+}
+
+.hero-rule {
+  width: 120px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  margin: 0 auto 2rem;
+}
+
+.hero-description {
+  font-size: 1.05rem;
+  color: var(--parchment);
+  max-width: 600px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.9;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 1.2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--parchment-dim);
+  font-size: 1.4rem;
+  animation: bob 2s ease-in-out infinite;
+  z-index: 1;
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(8px); }
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn-primary {
+  display: inline-block;
+  font-family: var(--font-title);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--stone);
+  background: var(--gold);
+  padding: 0.85rem 2.2rem;
+  border: 1px solid var(--gold);
+  transition: all var(--transition);
+}
+.btn-primary:hover {
+  background: var(--ivory-bright);
+  border-color: var(--ivory-bright);
+  color: var(--stone);
+}
+
+.btn-secondary {
+  display: inline-block;
+  font-family: var(--font-title);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--parchment);
+  background: transparent;
+  padding: 0.85rem 2.2rem;
+  border: 1px solid var(--stone-border);
+  transition: all var(--transition);
+}
+.btn-secondary:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.btn-text-link {
+  font-family: var(--font-title);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: inline-block;
+  margin-top: 1.5rem;
+  transition: color var(--transition);
+}
+.btn-text-link:hover { color: var(--ivory-bright); }
+
+.btn-bandcamp {
+  display: inline-block;
+  font-family: var(--font-title);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--stone);
+  background: var(--gold);
+  padding: 0.6rem 1.4rem;
+  margin-top: 0.75rem;
+  transition: all var(--transition);
+}
+.btn-bandcamp:hover { background: var(--ivory-bright); color: var(--stone); }
+
+/* ============================================================
+   SONG STRIP (HOME)
+   ============================================================ */
+.song-strip {
+  padding: 5rem 2rem;
+  background: var(--stone-mid);
+  border-top: 1px solid var(--stone-border);
+  border-bottom: 1px solid var(--stone-border);
+}
+
+.strip-label {
+  font-family: var(--font-title);
+  font-size: 0.65rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--parchment-dim);
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.strip-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.strip-card {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1;
+  display: block;
+}
+
+.strip-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease, filter 0.5s ease;
+  filter: brightness(0.7) saturate(0.7);
+}
+
+.strip-card:hover img {
+  transform: scale(1.06);
+  filter: brightness(0.5) saturate(0.5);
+}
+
+.strip-veil {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  background: rgba(12,11,9,0.4);
+  gap: 0.5rem;
+}
+
+.strip-card:hover .strip-veil { opacity: 1; }
+
+.strip-num {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--gold);
+  display: block;
+}
+
+.strip-name {
+  font-family: var(--font-title);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ivory);
+  text-align: center;
+  padding: 0 1rem;
+}
+
+/* ============================================================
+   CONCEPT SECTION
+   ============================================================ */
+.concept-section {
+  padding: 7rem 2rem;
+  background: var(--stone);
+}
+
+.concept-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.concept-text p {
+  margin-bottom: 1.4rem;
+  color: var(--parchment);
+}
+
+.concept-img img {
+  border: 1px solid var(--stone-border);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
+
+/* ============================================================
+   SECTION TITLES
+   ============================================================ */
+.section-title {
+  font-family: var(--font-title);
+  font-size: 1.6rem;
+  letter-spacing: 0.08em;
+  color: var(--ivory);
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--stone-border);
+}
+
+/* ============================================================
+   CREDITS STRIP
+   ============================================================ */
+.credits-strip {
+  background: var(--stone-mid);
+  border-top: 1px solid var(--stone-border);
+  padding: 5rem 2rem;
+}
+
+.credits-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.credits-title {
+  font-family: var(--font-title);
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--parchment-dim);
+  margin-bottom: 3rem;
+}
+
+.credits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem 3rem;
+  text-align: left;
+  margin-bottom: 2.5rem;
+}
+
+.credit-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--stone-border);
+}
+
+.credit-role {
+  font-family: var(--font-title);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--parchment-dim);
+}
+
+.credit-name {
+  font-size: 1.05rem;
+  color: var(--ivory);
+}
+
+.credits-copy {
+  font-style: italic;
+  color: var(--parchment-dim);
+  font-size: 0.9rem;
+}
+
+/* ============================================================
+   PAGE HEADER (interior pages)
+   ============================================================ */
+.page-header {
+  padding: 10rem 2rem 5rem;
+  text-align: center;
+  background:
+    linear-gradient(to bottom, rgba(12,11,9,1) 0%, rgba(22,20,16,1) 100%);
+  border-bottom: 1px solid var(--stone-border);
+  position: relative;
+}
+
+.page-header::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+
+.page-header-eyebrow {
+  font-family: var(--font-title);
+  font-size: 0.65rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--parchment-dim);
+  margin-bottom: 1rem;
+}
+
+.page-header-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  color: var(--ivory-bright);
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.page-header-sub {
+  font-style: italic;
+  color: var(--parchment-dim);
+  font-size: 1.05rem;
+}
+
+/* ============================================================
+   SONG NAV
+   ============================================================ */
+.song-nav {
+  position: sticky;
+  top: 63px;
+  z-index: 90;
+  background: rgba(15,13,10,0.97);
+  border-bottom: 1px solid var(--stone-border);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0;
+  backdrop-filter: blur(8px);
+}
+
+.song-nav a {
+  font-family: var(--font-title);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--parchment-dim);
+  padding: 1rem 1.5rem;
+  border-right: 1px solid var(--stone-border);
+  transition: all var(--transition);
+}
+
+.song-nav a:last-child { border-right: none; }
+.song-nav a:hover { color: var(--gold); background: rgba(184,151,58,0.05); }
+
+/* ============================================================
+   SONG PANELS
+   ============================================================ */
+.song-panel {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  min-height: 100vh;
+  border-bottom: 1px solid var(--stone-border);
+}
+
+.song-panel--alt {
+  background: var(--stone-mid);
+}
+
+.song-art-col {
+  position: sticky;
+  top: 110px;
+  height: calc(100vh - 110px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  border-right: 1px solid var(--stone-border);
+  background: var(--stone);
+}
+
+.song-panel--alt .song-art-col {
+  background: var(--stone-mid);
+}
+
+.song-numeral {
+  font-family: var(--font-display);
+  font-size: 4rem;
+  color: var(--stone-border);
+  line-height: 1;
+  margin-bottom: 1.5rem;
+  text-shadow: none;
+}
+
+.song-artwork {
+  width: 100%;
+  max-width: 360px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.7), 0 0 0 1px var(--stone-border);
+  transition: box-shadow 0.4s ease;
+}
+
+.song-artwork:hover {
+  box-shadow: 0 25px 80px rgba(0,0,0,0.8), 0 0 30px rgba(184,151,58,0.15), 0 0 0 1px var(--gold-dim);
+}
+
+.song-content-col {
+  padding: 5rem 4rem 6rem;
+  max-width: 800px;
+}
+
+.song-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  color: var(--ivory-bright);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+  line-height: 1.1;
+}
+
+.song-sub-title {
+  font-family: var(--font-body);
+  font-style: italic;
+  color: var(--parchment-dim);
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.song-rule {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(to right, var(--gold), transparent);
+  margin: 1.5rem 0 2.5rem;
+}
+
+.song-story,
+.song-lyrics,
+.song-media {
+  margin-bottom: 3.5rem;
+}
+
+.content-label {
+  font-family: var(--font-title);
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.2rem;
+  display: block;
+}
+
+.song-story p {
+  color: var(--parchment);
+  margin-bottom: 1.2rem;
+}
+
+/* ============================================================
+   MEDIA PLACEHOLDERS
+   ============================================================ */
+.media-placeholder,
+.video-placeholder {
+  border: 1px solid var(--stone-border);
+  background: var(--stone-light);
+  margin-bottom: 1rem;
+}
+
+.media-placeholder-inner,
+.video-placeholder-inner {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: center;
+}
+
+.media-icon {
+  font-size: 2rem;
+  color: var(--parchment-dim);
+  display: block;
+}
+
+.media-placeholder p,
+.video-placeholder p {
+  color: var(--parchment-dim);
+  font-style: italic;
+  font-size: 0.95rem;
+}
+
+/* ============================================================
+   LYRICS
+   ============================================================ */
+.lyrics-block {
+  border-left: 2px solid var(--gold-dim);
+  padding-left: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.lyrics-block p {
+  color: var(--parchment);
+  line-height: 1.9;
+  font-size: 1.05rem;
+}
+
+/* ============================================================
+   ARTIST PAGE
+   ============================================================ */
+.artist-hero {
+  position: relative;
+  height: 55vh;
+  min-height: 350px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.artist-hero-bg {
+  position: absolute;
+  inset: 0;
+}
+
+.artist-banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.6;
+}
+
+.artist-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(12,11,9,0.2) 0%, rgba(12,11,9,0.95) 100%);
+}
+
+.artist-hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 0 2rem 3rem;
+}
+
+.artist-hero-logo {
+  max-width: 280px;
+  margin: 0 auto 1rem;
+}
+
+.artist-hero-tagline {
+  font-style: italic;
+  color: var(--parchment-dim);
+  font-size: 1rem;
+}
+
+.artist-bio-section {
+  padding: 6rem 2rem;
+}
+
+.artist-bio-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.portrait-frame {
+  border: 1px solid var(--stone-border);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.artist-portrait {
+  width: 100%;
+  transition: transform 0.5s ease;
+}
+.portrait-frame:hover .artist-portrait { transform: scale(1.03); }
+
+.portrait-caption {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.caption-icon {
+  height: 30px;
+  width: auto;
+  opacity: 0.7;
+}
+
+.portrait-caption span {
+  font-family: var(--font-title);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--parchment-dim);
+  line-height: 1.5;
+}
+
+.artist-photo {
+  width: 100%;
+  border: 1px solid var(--stone-border);
+  opacity: 0.85;
+  transition: opacity var(--transition);
+}
+.artist-photo:hover { opacity: 1; }
+
+.bio-lead {
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--ivory);
+  margin-bottom: 1.8rem;
+  line-height: 1.8;
+}
+
+.bio-text p {
+  color: var(--parchment);
+  margin-bottom: 1.4rem;
+}
+
+/* ============================================================
+   DISCOGRAPHY
+   ============================================================ */
+.discography-section {
+  background: var(--stone-mid);
+  border-top: 1px solid var(--stone-border);
+  padding: 6rem 2rem;
+}
+
+.discography-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.disco-item {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 2rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--stone-border);
+  align-items: start;
+}
+
+.disco-featured {
+  background: rgba(184,151,58,0.05);
+  padding: 2rem;
+  border: 1px solid var(--gold-dim);
+  margin-bottom: 1rem;
+}
+
+.disco-year {
+  font-family: var(--font-title);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  padding-top: 0.3rem;
+}
+
+.disco-title {
+  font-family: var(--font-title);
+  font-size: 1.1rem;
+  color: var(--ivory);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.disco-badge {
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  background: var(--gold);
+  color: var(--stone);
+  padding: 0.2rem 0.6rem;
+  font-family: var(--font-title);
+  font-weight: 400;
+}
+
+.disco-tracklist {
+  font-style: italic;
+  color: var(--parchment-dim);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* ============================================================
+   LINKS PAGE
+   ============================================================ */
+.links-section {
+  padding: 5rem 2rem 7rem;
+}
+
+.links-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.links-group {
+  margin-bottom: 4rem;
+}
+
+.links-group-title {
+  font-family: var(--font-title);
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--parchment-dim);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--stone-border);
+}
+
+.links-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.link-card {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--stone-border);
+  background: var(--stone-mid);
+  transition: all var(--transition);
+  color: var(--parchment);
+}
+
+.link-card:hover {
+  border-color: var(--gold-dim);
+  background: var(--stone-light);
+  color: var(--ivory);
+}
+
+.link-card--featured {
+  border-color: var(--gold-dim);
+  background: rgba(184,151,58,0.06);
+}
+
+.link-card--featured:hover {
+  border-color: var(--gold);
+}
+
+.link-card-icon {
+  font-size: 1.4rem;
+  opacity: 0.7;
+  flex-shrink: 0;
+  width: 2rem;
+  text-align: center;
+}
+
+.link-card-text { flex: 1; }
+
+.link-card-text h3 {
+  font-family: var(--font-title);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  color: var(--ivory);
+  margin-bottom: 0.2rem;
+}
+
+.link-card-text p {
+  font-size: 0.9rem;
+  color: var(--parchment-dim);
+  font-style: italic;
+}
+
+.link-arrow {
+  color: var(--gold-dim);
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  transition: transform var(--transition), color var(--transition);
+}
+
+.link-card:hover .link-arrow {
+  transform: translateX(4px);
+  color: var(--gold);
+}
+
+/* ============================================================
+   CONTACT PAGE
+   ============================================================ */
+.contact-section {
+  padding: 6rem 2rem 8rem;
+}
+
+.contact-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.contact-text p {
+  color: var(--parchment);
+  margin-bottom: 1.4rem;
+}
+
+.email-link {
+  color: var(--gold);
+  border-bottom: 1px solid var(--gold-dim);
+  padding-bottom: 1px;
+}
+
+.contact-streaming { margin-top: 3rem; }
+
+.contact-stream-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-field label {
+  font-family: var(--font-title);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--parchment-dim);
+}
+
+.form-field input,
+.form-field textarea {
+  background: var(--stone-light);
+  border: 1px solid var(--stone-border);
+  color: var(--ivory);
+  padding: 0.75rem 1rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  transition: border-color var(--transition);
+  resize: vertical;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: var(--gold-dim);
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+  color: var(--parchment-dim);
+  opacity: 0.6;
+}
+
+.form-submit { margin-top: 0.5rem; cursor: pointer; }
+
+.form-note {
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--parchment-dim);
+  opacity: 0.7;
+  line-height: 1.6;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer {
+  background: var(--stone);
+  border-top: 1px solid var(--stone-border);
+  padding: 4rem 2rem;
+}
+
+.footer-inner {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.footer-icon {
+  height: 50px;
+  width: auto;
+  opacity: 0.6;
+  transition: opacity var(--transition);
+}
+.footer-icon:hover { opacity: 1; }
+
+.footer-tagline {
+  font-style: italic;
+  color: var(--parchment-dim);
+  font-size: 1rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer-links a {
+  font-family: var(--font-title);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--parchment-dim);
+  transition: color var(--transition);
+}
+.footer-links a:hover { color: var(--gold); }
+
+.footer-copy {
+  font-size: 0.8rem;
+  color: var(--parchment-dim);
+  opacity: 0.5;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1024px) {
+  .song-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .song-art-col {
+    position: relative;
+    top: 0;
+    height: auto;
+    padding: 3rem 2rem 2rem;
+    border-right: none;
+    border-bottom: 1px solid var(--stone-border);
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: flex-start;
+  }
+
+  .song-numeral { font-size: 2.5rem; margin-bottom: 0; }
+
+  .song-artwork { max-width: 200px; }
+
+  .song-content-col { padding: 3rem 2rem 4rem; }
+
+  .concept-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .concept-img { order: -1; }
+
+  .artist-bio-inner { grid-template-columns: 1fr; gap: 3rem; }
+
+  .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+
+  .strip-grid { grid-template-columns: repeat(3, 1fr); }
+  .strip-grid .strip-card:nth-child(4),
+  .strip-grid .strip-card:nth-child(5) {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-toggle { display: block; }
+
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 63px; left: 0; right: 0;
+    background: var(--stone);
+    padding: 2rem;
+    border-bottom: 1px solid var(--stone-border);
+    gap: 1.5rem;
+    z-index: 99;
+  }
+
+  .strip-grid { grid-template-columns: repeat(2, 1fr); }
+  .strip-grid .strip-card:nth-child(4),
+  .strip-grid .strip-card:nth-child(5) {
+    display: block;
+  }
+
+  .credits-grid { grid-template-columns: 1fr; }
+
+  .disco-item { grid-template-columns: 80px 1fr; }
+
+  .song-art-col { flex-direction: column; align-items: center; }
+
+  .hero-cta { flex-direction: column; align-items: center; }
+}
+
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Song nav active state */
+.song-nav a.active {
+  color: var(--gold);
+  background: rgba(184,151,58,0.05);
+}

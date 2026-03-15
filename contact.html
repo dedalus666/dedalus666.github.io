@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Dedalus</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="nav-logo"><img src="images/dedalus-icon.png" alt="Dedalus"></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="songs.html">The Songs</a></li>
+    <li><a href="dedalus.html">Dedalus</a></li>
+    <li><a href="links.html">Links</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+  <button class="nav-toggle" aria-label="Menu">&#9776;</button>
+</nav>
+
+<header class="page-header">
+  <div class="page-header-inner">
+    <p class="page-header-eyebrow">Dedalus</p>
+    <h1 class="page-header-title">Send Word</h1>
+    <p class="page-header-sub">Messages reach the labyrinth eventually.</p>
+  </div>
+</header>
+
+<section class="contact-section">
+  <div class="contact-inner">
+
+    <div class="contact-text">
+      <h2 class="section-title">Get in Touch</h2>
+      <p>Whether you have questions about the music, are interested in collaboration, or simply want to share your experience with <em>Piranesi</em> — a message is always welcome.</p>
+      <p>You can also reach out directly at <a href="mailto:joe@artneverdies.com" class="email-link">joe@artneverdies.com</a></p>
+      <div class="contact-streaming">
+        <p class="content-label">Find the music on</p>
+        <div class="contact-stream-links">
+          <a href="https://joewilford.bandcamp.com/music" target="_blank" class="btn-secondary">Bandcamp</a>
+          <a href="https://open.spotify.com/artist/7KIFpEmJ60Qsy2uLBTqwLW" target="_blank" class="btn-secondary">Spotify</a>
+          <a href="https://youtube.com/@darkartsmusic" target="_blank" class="btn-secondary">YouTube</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form-wrap">
+      <form class="contact-form" id="contactForm">
+        <div class="form-field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required>
+        </div>
+        <div class="form-field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="your@email.com" required>
+        </div>
+        <div class="form-field">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" placeholder="What brings you here?">
+        </div>
+        <div class="form-field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="6" placeholder="Your message..." required></textarea>
+        </div>
+        <button type="submit" class="btn-primary form-submit">Send Message</button>
+        <p class="form-note">* This form requires a form backend service (e.g. Formspree) to be configured before deployment. See README for setup instructions.</p>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <img src="images/dedalus-icon.png" alt="Dedalus" class="footer-icon">
+    <p class="footer-tagline">The journey is without maps.</p>
+    <div class="footer-links">
+      <a href="https://joewilford.bandcamp.com/music" target="_blank">Bandcamp</a>
+      <a href="https://open.spotify.com/artist/7KIFpEmJ60Qsy2uLBTqwLW" target="_blank">Spotify</a>
+      <a href="https://youtube.com/@darkartsmusic" target="_blank">YouTube</a>
+    </div>
+    <p class="footer-copy">&copy; 2026 Dedalus / Joe Wilford. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
