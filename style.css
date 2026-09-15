@@ -1214,3 +1214,38 @@ a:hover { color: var(--ivory-bright); }
   color: var(--gold);
   background: rgba(184,151,58,0.05);
 }
+/* ============================================================
+   FORMSPREE STATES
+   ============================================================ */
+.form-success {
+  border: 1px solid var(--gold-dim);
+  background: rgba(184,151,58,0.08);
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--ivory);
+  font-style: italic;
+  font-size: 1.05rem;
+}
+
+.form-error {
+  border: 1px solid var(--rust);
+  background: rgba(139,58,42,0.08);
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--parchment);
+  font-style: italic;
+  font-size: 1.05rem;
+}
+
+.field-error {
+  font-size: 0.85rem;
+  color: var(--rust);
+  font-style: italic;
+  display: block;
+  margin-top: 0.3rem;
+}
+
+[data-fs-submit-btn]:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
