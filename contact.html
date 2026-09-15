@@ -48,26 +48,42 @@
     </div>
 
     <div class="contact-form-wrap">
-      <form class="contact-form" id="contactForm">
-        <div class="form-field">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" placeholder="Your name" required>
-        </div>
-        <div class="form-field">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="your@email.com" required>
-        </div>
-        <div class="form-field">
-          <label for="subject">Subject</label>
-          <input type="text" id="subject" name="subject" placeholder="What brings you here?">
-        </div>
-        <div class="form-field">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="6" placeholder="Your message..." required></textarea>
-        </div>
-        <button type="submit" class="btn-primary form-submit">Send Message</button>
-        <p class="form-note">* This form requires a form backend service (e.g. Formspree) to be configured before deployment. See README for setup instructions.</p>
-      </form>
+    <div data-fs-success class="form-success" style="display:none">
+  <p>&#10003; Your message has been received. Thank you for reaching out.</p>
+</div>
+
+<div data-fs-error class="form-error" style="display:none">
+  <p>Something went wrong. Please try again or email directly at <a href="mailto:joe@artneverdies.com">joe@artneverdies.com</a></p>
+</div>
+
+<form id="contact-form" class="contact-form">
+  <div class="form-field">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" placeholder="Your name" required data-fs-field>
+    <span data-fs-error="name" class="field-error"></span>
+  </div>
+  <div class="form-field">
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" placeholder="your@email.com" required data-fs-field>
+    <span data-fs-error="email" class="field-error"></span>
+  </div>
+  <div class="form-field">
+    <label for="subject">Subject</label>
+    <input type="text" id="subject" name="subject" placeholder="What brings you here?">
+  </div>
+  <div class="form-field">
+    <label for="message">Message</label>
+    <textarea id="message" name="message" rows="6" placeholder="Your message..." required data-fs-field></textarea>
+    <span data-fs-error="message" class="field-error"></span>
+  </div>
+  <button type="submit" class="btn-primary form-submit" data-fs-submit-btn>Send Message</button>
+</form>
+
+<script>
+  window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+  formspree('initForm', { formElement: '#contact-form', formId: 'xljdrbga' });
+</script>
+<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
     </div>
 
   </div>
