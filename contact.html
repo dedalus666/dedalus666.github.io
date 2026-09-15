@@ -48,24 +48,22 @@
     </div>
 
     <div class="contact-form-wrap">
-    <div data-fs-success class="form-success" style="display:none">
+ <div id="form-success" class="form-success" style="display:none">
   <p>&#10003; Your message has been received. Thank you for reaching out.</p>
 </div>
 
-<div data-fs-error class="form-error" style="display:none">
+<div id="form-error" class="form-error" style="display:none">
   <p>Something went wrong. Please try again or email directly at <a href="mailto:joe@artneverdies.com">joe@artneverdies.com</a></p>
 </div>
 
 <form id="contact-form" class="contact-form">
   <div class="form-field">
     <label for="name">Name</label>
-    <input type="text" id="name" name="name" placeholder="Your name" required data-fs-field>
-    <span data-fs-error="name" class="field-error"></span>
+    <input type="text" id="name" name="name" placeholder="Your name" required>
   </div>
   <div class="form-field">
     <label for="email">Email</label>
-    <input type="email" id="email" name="email" placeholder="your@email.com" required data-fs-field>
-    <span data-fs-error="email" class="field-error"></span>
+    <input type="email" id="email" name="email" placeholder="your@email.com" required>
   </div>
   <div class="form-field">
     <label for="subject">Subject</label>
@@ -73,17 +71,46 @@
   </div>
   <div class="form-field">
     <label for="message">Message</label>
-    <textarea id="message" name="message" rows="6" placeholder="Your message..." required data-fs-field></textarea>
-    <span data-fs-error="message" class="field-error"></span>
+    <textarea id="message" name="message" rows="6" placeholder="Your message..." required></textarea>
   </div>
-  <button type="submit" class="btn-primary form-submit" data-fs-submit-btn>Send Message</button>
+  <button type="submit" class="btn-primary form-submit" id="submit-btn">Send Message</button>
 </form>
 
 <script>
-  window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
-  formspree('initForm', { formElement: '#contact-form', formId: 'xljdrbga' });
+  const form = document.getElementById('contact-form');
+  const submitBtn = document.getElementById('submit-btn');
+  const successMsg = document.getElementById('form-success');
+  const errorMsg = document.getElementById('form-error');
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+
+    const data = new FormData(form);
+
+    try {
+      const response = await fetch('https://formspree.io/f/xljdrbga', {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        form.style.display = 'none';
+        successMsg.style.display = 'block';
+      } else {
+        errorMsg.style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
+      }
+    } catch(err) {
+      errorMsg.style.display = 'block';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send Message';
+    }
+  });
 </script>
-<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
     </div>
 
   </div>
