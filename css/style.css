@@ -1214,3 +1214,33 @@ a:hover { color: var(--ivory-bright); }
   color: var(--gold);
   background: rgba(184,151,58,0.05);
 }
+
+/* Bio subsections */
+.bio-subhead {
+  font-family: var(--font-title);
+  font-size: 1.05rem;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  margin: 2.8rem 0 1rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid var(--stone-border);
+}
+.bio-subhead em { font-family: var(--font-body); font-size: 1.2em; color: var(--ivory); }
+.bio-tagline {
+  font-style: italic;
+  color: var(--ivory) !important;
+}
+.bio-songs {
+  list-style: none;
+  margin: 0 0 1.6rem;
+  border-left: 1px solid var(--gold-dim);
+  padding-left: 1.4rem;
+}
+.bio-songs li {
+  color: var(--parchment);
+  margin-bottom: 1.1rem;
+  line-height: 1.7;
+}
+.bio-songs strong { font-family: var(--font-title); font-weight: 600; font-size: 0.9em; letter-spacing: 0.04em; color: var(--ivory); }
+.bio-text a { color: var(--gold); }
+.bio-text a:hover { color: var(--ivory); }
