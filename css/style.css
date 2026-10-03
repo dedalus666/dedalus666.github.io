@@ -477,7 +477,11 @@ a:hover { color: var(--ivory-bright); }
 .page-header {
   padding: 10rem 2rem 5rem;
   text-align: center;
+  /* Layers, top to bottom: stone grain, candlelight glow, corner vignette, base */
   background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.78  0 0 0 0 0.72  0 0 0 0 0.60  0 0 0 0.11 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+    radial-gradient(ellipse 55% 75% at 50% 64%, rgba(184,151,58,0.16) 0%, rgba(184,151,58,0.06) 40%, rgba(184,151,58,0) 72%),
+    radial-gradient(ellipse 120% 110% at 50% 60%, rgba(0,0,0,0) 45%, rgba(0,0,0,0.55) 100%),
     linear-gradient(to bottom, rgba(12,11,9,1) 0%, rgba(22,20,16,1) 100%);
   border-bottom: 1px solid var(--stone-border);
   position: relative;
