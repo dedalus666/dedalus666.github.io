@@ -7,6 +7,34 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+/* Trailer embed (homepage) */
+.trailer { max-width: 900px; margin: 5rem auto 0; }
+.trailer-label {
+  font-family: var(--font-title);
+  font-size: 0.65rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--parchment-dim);
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.trailer-frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: var(--stone-light);
+  border: 1px solid var(--stone-border);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
+.trailer-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+@media (max-width: 768px) { .trailer { margin-top: 3.5rem; } }
+</style>
 </head>
 <body>
 
@@ -81,6 +109,12 @@
     </div>
     <div class="concept-img">
       <img src="images/piranesi-back-cover-alt.png" alt="Piranesi back cover">
+    </div>
+  </div>
+  <div class="trailer">
+    <div class="trailer-label">The Trailer</div>
+    <div class="trailer-frame">
+      <iframe src="https://www.youtube-nocookie.com/embed/JKnv0bKHpz0?rel=0" title="Piranesi — Official Trailer" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
   </div>
 </section>
