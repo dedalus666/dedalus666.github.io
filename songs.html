@@ -21,6 +21,20 @@
   border: 0;
 }
 .song-media .btn-bandcamp { margin: 0.75rem 0 1.5rem; }
+.video-frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: var(--stone-light);
+  border: 1px solid var(--stone-border);
+  margin-bottom: 1rem;
+}
+.video-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
 </style>
 </head>
 <body>
@@ -161,11 +175,8 @@
         <iframe src="https://bandcamp.com/EmbeddedPlayer/track=3923916297/size=large/bgcol=333333/linkcol=b8973a/tracklist=false/artwork=none/transparent=true/" title="Curse of Jaxx! by Joe Wilford" loading="lazy" seamless></iframe>
       </div>
       <a href="https://joewilford.bandcamp.com/track/curse-of-jaxx" target="_blank" class="btn-bandcamp">Listen on Bandcamp</a>
-      <div class="video-placeholder">
-        <div class="video-placeholder-inner">
-          <span class="media-icon">&#9654;</span>
-          <p>Video coming soon</p>
-        </div>
+      <div class="video-frame">
+        <iframe src="https://www.youtube-nocookie.com/embed/KMPs-ThvJGw?rel=0" title="Curse of Jaxx! — Dedalus" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
     </div>
 
